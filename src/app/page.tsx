@@ -15,20 +15,31 @@ export default function Home() {
   const [score, setScore] = useState<Score>({ X: 0, O: 0, draw: 0 });
 
   const currentPlayer: Player = xIsNext ? 'X' : 'O';
-  const winner = calculateWinner(board);
+  
+  const winnerInfo = calculateWinner(board);
+  const winner = winnerInfo?.winner ?? null;
+  const winningLine = winnerInfo?.line ?? [];
+
+  let isResultDraw = !winner && !board.includes(null);
 
   const handleTileClick = (index: number) => {
     if (board[index] || winner) return;
 
     const newBoard = [...board];
     newBoard[index] = currentPlayer;
+
+    const newWinnerInfo = calculateWinner(newBoard);
+    const newWinner = newWinnerInfo?.winner ?? null;
+
     setBoard(newBoard);
 
-    const result = calculateWinner(newBoard);
-    if (result) {
-      setScore(prev => ({ ...prev, [result]: prev[result] + 1 }));
+    if (newWinner) {
+      setScore(prev => ({ ...prev, [newWinner]: prev[newWinner] + 1 }));
+      return;
+
     } else if (isDraw(newBoard)) {
       setScore(prev => ({ ...prev, draw: prev.draw + 1 }));
+      return;
     }
 
     setXIsNext(!xIsNext);
@@ -45,26 +56,64 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6">
+    <div className="flex flex-col items-center justify-center m-4">
       
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold m-6">
+      <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold m-6">
         Tic-Tac-Toe
       </h1>
 
-      <Board 
-        board={board} 
-        onTileClick={handleTileClick} 
-      />
-
-      <div className="text-xl mb-4">
+      <div className="text-base md:text-lg lg:text-xl m-4">
         {winner
-          ? `Winner: ${winner}`
+          ? `Winner: Player ${winner}`
           : board.includes(null)
           ? `Player (${currentPlayer})'s Turn`
           : "It's a Draw!"}
       </div>
 
-      <div className="mb-4 grid grid-cols-2 place-content-stretch">
+      <Board 
+        board={board} 
+        onTileClick={handleTileClick} 
+        winningLine={winningLine} 
+      />
+
+      <div className="grid grid-cols-3 gap-x-3.5 md:gap-x-7 lg:gap-x-10 text-center">
+        <p
+          className={`text-base md:text-xl lg:text-2xl font-bold
+            ${winner === 'X'
+              ? 'color-win'
+              : !winner && !isResultDraw && currentPlayer === 'X'
+              ? 'color-x'
+              : 'color-x not-turn'
+          }`}
+        >
+          - X -
+        </p>
+
+        <p
+          className={`text-base md:text-xl lg:text-2xl ${
+            isResultDraw ? 'color-win blink' : ''
+          }`}
+        >
+          Tie {isResultDraw}
+        </p>
+
+        <p
+          className={`text-base md:text-xl lg:text-2xl font-bold 
+            ${winner === 'O'
+              ? 'color-win'
+              : !winner && !isResultDraw && currentPlayer === 'O'
+              ? 'color-o'
+              : 'color-o not-turn'
+          }`}
+        >
+          - O -
+        </p>
+        <p className="mt-2 mb-4 text-xs md:text-sm lg:text-base">{score.X}</p>
+        <p className="mt-2 mb-4 text-xs md:text-sm lg:text-base">{score.draw}</p>
+        <p className="mt-2 mb-4 text-xs md:text-sm lg:text-base">{score.O}</p>
+      </div>
+
+      <div className="mt-4 mb-4 grid grid-cols-2 place-content-stretch text-xs md:text-sm lg:text-base">
         <button
           onClick={resetBoard}
           className="px-4 py-2 bg-blue-500 text-white rounded mr-2 hover:bg-blue-600"
@@ -76,18 +125,8 @@ export default function Home() {
           onClick={resetScores}
           className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
         >
-          Reset Scores
+          Reset Score
         </button>
-      </div>
-
-      <div className="grid grid-cols-3 text-center">
-        <p>Player X</p>
-        <p>Tie</p>
-        <p>Player O</p>
-
-        <p>{score.X}</p>
-        <p>{score.draw}</p>
-        <p>{score.O}</p>
       </div>
     </div>
   );

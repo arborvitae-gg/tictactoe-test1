@@ -1,15 +1,57 @@
 @import "tailwindcss";
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-} */
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  /* --background: #ffffff;
+  --foreground: #171717; */
+}
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+} */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.blink {
+  animation: blink 0.4s step-start infinite;
+}
+
+.blink-red {
+  animation: blink 1s step-start infinite;
+  color: #dc2626; /* Tailwind red-600 */
+}
+
+.blink-green {
+  animation: blink 1s step-start infinite;
+  color: #16a34a; /* Tailwind green-600 */
+}
+
+.blink-gold {
+  animation: blink 1s step-start infinite;
+  color: #d4af37; /* Gold color */
+}
+
+.color-x {
+  color: #dc2626; /* Tailwind red-600 */
+}
+
+.color-o {
+  color: #16a34a; /* Tailwind green-600 */
+}
+
+.color-win {
+  color: #d4af37; /* Gold color */
+}
+
+.not-turn {
+  opacity: 0.3;
 }
 
 body {
