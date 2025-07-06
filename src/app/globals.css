@@ -24,26 +24,31 @@
 }
 
 .color-x {
-  color: #dc2626; /* Tailwind red-600 */
+  color: #ff0000; /* Tailwind red-600 */
 }
 
 .color-o {
-  color: #16a34a; /* Tailwind green-600 */
+  color: #00ff5e; /* Tailwind green-600 */
 }
 
 .color-win {
-  color: #d4af37; /* Gold color */
+  color: #ffc400; /* Gold color */
 }
 
-/* .opaque {
-  opacity: 0.3;
-} */
+.color-next {
+  background-color: #1100ff
+}
 
-body {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  
+.color-reset {
+  background-color: #ae00ff
+}
+
+.controls-button {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+body {  
   background: var(--background);
   color: var(--foreground);
   font-family: "Press Start 2P";

@@ -21,11 +21,11 @@ export default function Home() {
   } = useTicTacToe();
 
   return (
-    <div className="flex flex-col items-center justify-center m-4">
+    <div className="flex flex-col items-center justify-center h-screen">
       
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-8 mb-8">
+      {/* <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold m-8">
         TicTacToe
-      </h1>
+      </h1> */}
 
       <Board 
         board={board} 

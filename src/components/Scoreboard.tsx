@@ -16,35 +16,35 @@ export default function Scoreboard({
 }: ScoreboardProps) {
 
   return (
-    <div className="grid grid-cols-3 gap-x-3.5 md:gap-x-7 lg:gap-x-10 text-center">
+    <div className="grid grid-cols-3 gap-x-4.5 md:gap-x-5 lg:gap-x-8 text-center mt-4">
 
       <p
-        className={`mt-4 text-base md:text-xl lg:text-2xl font-bold ${
+        className={`text-sm md:text-xl lg:text-2xl font-bold ${
           winner === 'X'
             ? 'color-win'
             : !winner && !isResultDraw && currentPlayer === 'X'
             ? 'color-x'
-            : 'color-x opacity-20'
+            : 'color-x opacity-40'
         }`}
       >
         - X -
       </p>
 
       <p
-        className={`mt-4 text-base md:text-xl lg:text-2xl font-bold ${
-          isResultDraw ? 'color-win blink' : ''
+        className={`text-sm md:text-xl lg:text-2xl font-bold ${
+          isResultDraw ? 'color-win' : ''
         }`}
       >
         Draw
       </p>
 
       <p
-        className={`mt-4 text-base md:text-xl lg:text-2xl font-bold ${
+        className={`text-sm md:text-xl lg:text-2xl font-bold ${
           winner === 'O'
             ? 'color-win'
             : !winner && !isResultDraw && currentPlayer === 'O'
             ? 'color-o'
-            : 'color-o opacity-20'
+            : 'color-o opacity-40'
         }`}
       >
         - O -
@@ -52,7 +52,7 @@ export default function Scoreboard({
 
       {/* Scores */}
       <p
-        className={`mt-2 mb-4 text-sm md:text-base lg:text-lg ${
+        className={`mt-2 mb-4 text-sm md:text-lg lg:text-xl ${
           winner === "X" ? "blink" : ""
         }`}
       >
@@ -60,7 +60,7 @@ export default function Scoreboard({
       </p>
 
       <p
-        className={`mt-2 mb-4 text-sm md:text-base lg:text-lg ${
+        className={`mt-2 mb-4 text-sm md:text-lg lg:text-xl ${
           isResultDraw ? "blink" : ""
         }`}
       >
@@ -68,7 +68,7 @@ export default function Scoreboard({
       </p>
 
       <p
-        className={`mt-2 mb-4 text-sm md:text-base lg:text-lg ${
+        className={`mt-2 mb-4 text-sm md:text-lg lg:text-xl ${
           winner === "O" ? "blink" : ""
         }`}
       >

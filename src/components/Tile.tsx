@@ -23,7 +23,7 @@ export default function Tile({
   return (
     <button
       className={`
-        w-20 h-20 md:w-28 md:h-28 lg:w-36 lg:h-36 
+        w-20 h-20 md:w-31 md:h-31 lg:w-36 lg:h-36 
         font-bold content-center border 
         ${gameOver ? 'cursor-default' : 'cursor-pointer'}
       `}
@@ -43,7 +43,7 @@ export default function Tile({
         <p
           className={`
             text-4xl md:text-5xl lg:text-6xl
-            opacity-0 hover:opacity-20
+            opacity-0 hover:opacity-40
             ${previewColorClass}
           `}
           aria-hidden="true"

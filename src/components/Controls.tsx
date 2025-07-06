@@ -5,27 +5,35 @@ interface ControlsProps {
 }
 
 export default function Controls({ resetBoard, resetScores, gameOver }: ControlsProps) {
-  if (!gameOver) return null; 
-  
+
   return (
-    <div className="grid grid-cols-2 text-xs md:text-sm lg:text-base gap-6">
-      <div className="flex justify-center">
-        <button
-          onClick={resetBoard}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full"
-        >
-          New Match
-        </button>
+    <div
+      className="mt-4 grid grid-rows-2 md:gap-2 lg:gap-5 md:grid-cols-2 md:grid-rows-1 text-sm md:text-sm lg:text-base"
+      style={{ minHeight: '96px' }} // empty space 
+    >
+
+      <div>
+        {gameOver && (
+          <button
+            onClick={resetBoard}
+            className="w-full px-4 py-2 color-next rounded hover:opacity-40 cursor-pointer"
+          >
+            New Match
+          </button>
+        )}
       </div>
 
-      <div className="flex justify-center">
-        <button
-          onClick={resetScores}
-          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 w-full"
-        >
-          Reset Score
-        </button>
+      <div>
+        {gameOver && (
+          <button
+            onClick={resetScores}
+            className="w-full px-4 py-2 color-reset rounded hover:opacity-40 cursor-pointer"
+          >
+            Reset Score
+          </button>
+        )}
       </div>
+
     </div>
   );
 }
