@@ -14,7 +14,7 @@ export default function Tile({
   isWinningTile = false, 
   previewValue = null,
   onClick, 
-
+  
 }: TileProps) {
   const textColorClass = value === 'X' ? 'color-x' : 'color-o';
   const winningClass = isWinningTile ? 'color-win blink' : '';
@@ -24,7 +24,7 @@ export default function Tile({
     <button
       className={`
         w-20 h-20 md:w-31 md:h-31 lg:w-36 lg:h-36 
-        font-bold content-center border 
+        font-bold border-2 flex justify-center items-center
         ${gameOver ? 'cursor-default' : 'cursor-pointer'}
       `}
       onClick={onClick}   
@@ -32,7 +32,7 @@ export default function Tile({
     >              
       {/* X or O */}
       <p className={`
-        text-4xl md:text-5xl lg:text-6xl 
+        text-4xl md:text-5xl lg:text-7xl 
         ${winningClass} ${textColorClass}`
         }>
         {value}
@@ -42,7 +42,7 @@ export default function Tile({
        {!gameOver && !value && previewValue && (
         <p
           className={`
-            text-4xl md:text-5xl lg:text-6xl
+            text-3xl md:text-4xl lg:text-6xl
             opacity-0 hover:opacity-40
             ${previewColorClass}
           `}

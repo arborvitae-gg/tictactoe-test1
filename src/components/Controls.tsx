@@ -8,10 +8,9 @@ export default function Controls({ resetBoard, resetScores, gameOver }: Controls
 
   return (
     <div
-      className="mt-4 grid grid-rows-2 md:gap-2 lg:gap-5 md:grid-cols-2 md:grid-rows-1 text-sm md:text-sm lg:text-base"
-      style={{ minHeight: '96px' }} // empty space 
+      className="mt-4 grid grid-rows-2 gap-3 md:gap-3 lg:gap-5 md:grid-cols-2 md:grid-rows-1 text-sm md:text-sm lg:text-base"
+      style={{ minHeight: '40px' }} // empty space 
     >
-
       <div>
         {gameOver && (
           <button
