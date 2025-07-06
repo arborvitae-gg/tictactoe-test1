@@ -23,21 +23,6 @@
   animation: blink 0.4s step-start infinite;
 }
 
-.blink-red {
-  animation: blink 1s step-start infinite;
-  color: #dc2626; /* Tailwind red-600 */
-}
-
-.blink-green {
-  animation: blink 1s step-start infinite;
-  color: #16a34a; /* Tailwind green-600 */
-}
-
-.blink-gold {
-  animation: blink 1s step-start infinite;
-  color: #d4af37; /* Gold color */
-}
-
 .color-x {
   color: #dc2626; /* Tailwind red-600 */
 }
@@ -50,9 +35,9 @@
   color: #d4af37; /* Gold color */
 }
 
-.not-turn {
+/* .opaque {
   opacity: 0.3;
-}
+} */
 
 body {
   /* display: flex;
