@@ -12,7 +12,7 @@ export function calculateWinner(board: TileValue[]): { winner: TileValue; line: 
     [2, 4, 6],
   ];
 
-  for (let [a, b, c] of lines) {
+  for (const [a, b, c] of lines) {
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
       return { winner: board[a], line: [a, b, c] };
     }
